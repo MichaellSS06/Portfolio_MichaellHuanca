@@ -1,0 +1,38 @@
+---
+interface ExperienciaItem {
+  puesto: string;
+  empresa: string;
+  periodo: string;
+  descripcion: string;
+}
+const experiencias: ExperienciaItem[] = [
+  {
+    puesto: 'Ingeniero de Software',
+    empresa: 'Empresa A',
+    periodo: '2023 – Presente',
+    descripcion: 'Desarrollo de …',
+  },
+  {
+    puesto: 'Desarrollador Frontend',
+    empresa: 'Empresa B',
+    periodo: '2021 – 2023',
+    descripcion: 'Creación de interfaces con React y Next.js …',
+  },
+  // agrega más items
+];
+---
+<section id="experiencia" class="py-20 px-6">
+  <div class="max-w-4xl mx-auto">
+    <h2 class="text-3xl font-semibold mb-8 text-center">Experiencia laboral</h2>
+    <div class="space-y-8">
+      {experiencias.map(exp => (
+        <div class="bg-blue-800/40 p-4 rounded-lg">
+          <h3 class="text-2xl font-bold">{exp.puesto}</h3>
+          <p class="text-blue-200">{exp.empresa} · {exp.periodo}</p>
+          <p class="mt-2 text-sm md:text-base">{exp.descripcion}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+

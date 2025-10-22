@@ -5,21 +5,149 @@ import '../styles/global.css'
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>Tu Nombre | Desarrollador Full-Stack</title>
+		<meta name="description" content="Portafolio personal de Tu Nombre, desarrollador full-stack especializado en Next.js, Django, React Native, Astro y más." />
+		<meta name="author" content="Tu Nombre" />
+		<meta name="keywords" content="Next.js, React, Astro, Django, Supabase, MongoDB, React Native, Fullstack, Portafolio" />
+
+		 <!-- Open Graph para compartir en redes -->
+		<meta property="og:title" content="Tu Nombre | Desarrollador Full-Stack" />
+		<meta property="og:description" content="Mira mis proyectos en Next.js, Django, React Native y más." />
+		<meta property="og:image" content="/images/preview.jpg" />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="https://tusitio.com" />
+
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content="Tu Nombre | Desarrollador Full-Stack " />
+		<meta name="twitter:description" content="Mira mis proyectos en Next.js, Django, React Native y más." />
+		<meta name="twitter:image" content="/images/preview.jpg" />
+
+		<!-- Fuente Onest Variable -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap" rel="stylesheet">
+
 	</head>
-	<body>
-		<slot />
+	<body class="min-h-screen font-sans">
+		<div class="container">
+			<slot />
+			<!-- Botón de tema -->
+			<button id="theme-toggle" class="fixed bottom-6 right-6 p-3 rounded-full backdrop-blur-md border-2 hover:scale-105 transition text-xl" style="border-color: var(--color-border)" title="Cambiar tema">
+				⚙️
+			</button>
+		</div>
 	</body>
+	<script>
+      const html = document.documentElement;
+      const btn = document.getElementById("theme-toggle")!;
+
+      // Recuperar tema guardado o sistema
+      const savedTheme = localStorage.getItem("theme") || "system";
+      applyTheme(savedTheme);
+
+      btn.addEventListener("click", () => {
+        const current = localStorage.getItem("theme") || "system";
+        const next = current === "system" ? "light" : current === "light" ? "dark" : "system";
+        applyTheme(next);
+      });
+
+      function applyTheme(mode:any) {
+        localStorage.setItem("theme", mode);
+
+        if (mode === "light") {
+          html.classList.remove("dark");
+          html.classList.add("light");
+          btn.textContent = "☀️";
+        } else if (mode === "dark") {
+          html.classList.remove("light");
+          html.classList.add("dark");
+          btn.textContent = "🌙";
+        } else {
+          html.classList.remove("light", "dark");
+          btn.textContent = "⚙️";
+          // modo system: depende del sistema operativo
+        }
+      }
+    </script>
 </html>
 
 <style>
+	/* Variables de color globales */
+	:root {
+		--color-bg-light-start: #e6f0ff;
+		--color-bg-light-end: #b3ccff;
+		--color-text-light: #0a0a0a;
+		--color-border-light: #0a0a0a36;
+
+		--color-bg-dark-start: #1e223f;
+		--color-bg-dark-end: #060818;
+		--color-text-dark: #f3f4f6;
+		--color-border-dark: #f3f4f661;
+
+		--font-main: "Onest", system-ui, sans-serif;
+	}
+	/* y redefinir con @font-face */
+	/* @font-face {
+		font-family: "MiFuente";
+		src: url("https://fonts.gstatic.com/s/onest/v3/xyz.woff2") format("woff2");
+		font-display: swap;
+	} */
+
+	/* Detectar tema del sistema */
+	@media (prefers-color-scheme: light) {
+		:root {
+		--color-bg-start: var(--color-bg-light-start);
+		--color-bg-end: var(--color-bg-light-end);
+		--color-text: var(--color-text-light);
+		--color-border-system: var(--color-border-light);
+		}
+	}
+
+	@media (prefers-color-scheme: dark) {
+		:root {
+		--color-bg-start: var(--color-bg-dark-start);
+		--color-bg-end: var(--color-bg-dark-end);
+		--color-text: var(--color-text-dark);
+		--color-border-system: var(--color-border-dark);
+		}
+	}
+
+	/* Gradiente dinámico según tema */
+	html.light .container {
+		background: linear-gradient(to bottom, var(--color-bg-light-start), var(--color-bg-light-end));
+		color: var(--color-text-light);
+		--color-border: var(--color-border-light);
+	}
+
+	html.dark .container {
+		background: linear-gradient(to bottom, var(--color-bg-dark-start), var(--color-bg-dark-end));
+		color: var(--color-text-dark);
+		--color-border: var(--color-border-dark);
+	}
+
+	html:not(.light):not(.dark) .container {
+		/* system (usa prefers-color-scheme) */
+		background: linear-gradient(to bottom, var(--color-bg-start), var(--color-bg-end));
+		color: var(--color-text);
+		--color-border: var(--color-border-system);
+	}
+
+
 	html,
 	body {
 		margin: 0;
 		width: 100%;
 		height: 100%;
+		font-family: var(--font-main);
+		/* color: var(--color-text);
+		background-color: var(--color-bg-start); */
+	}
+	.container {
+		min-height: 100vh;
+		min-width: 100%;
+		/* background: linear-gradient(to bottom, var(--color-bg-start), var(--color-bg-end)); */
+		transition: background-color 0.5s ease, color 0.5s ease;
 	}
 </style>

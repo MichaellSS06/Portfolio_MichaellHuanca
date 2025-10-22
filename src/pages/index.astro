@@ -1,4 +1,10 @@
 ---
+import About from '../components/About.astro';
+import Experiencia from '../components/Experiencia.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import Proyectos from '../components/Proyectos.astro';
 import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
 
@@ -7,5 +13,12 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout>
-	<Welcome />
+	<Header />
+    <main class="scroll-smooth">
+      <Hero />
+      <Experiencia />
+      <Proyectos />
+      <About />
+    </main>
+    <Footer />
 </Layout>
