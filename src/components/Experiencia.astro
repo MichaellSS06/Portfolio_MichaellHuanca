@@ -1,4 +1,6 @@
 ---
+import BriefCase from "../assets/briefcase_icon.svg";
+
 interface ExperienciaItem {
   puesto: string;
   empresa: string;
@@ -16,14 +18,16 @@ const experiencias: ExperienciaItem[] = [
     puesto: 'Proyectos Universitarios y Freelance',
     empresa: 'UC y Redes sociales',
     periodo: 'Marzo 2024 – Presente',
-    descripcion: 'Creación una app de entrenamiento físico personalizado, con chats de usuarios y planes de suscripción. Desarrollo de mi página web personal con para gestión de redes sociales.',
+    descripcion: 'Creación una app de entrenamiento físico personalizado, con seguimiento de progreso, histórico de entrenamientos, clasificación, fácil registro usando cuenta de Google o Github, con chats de usuarios y planes de suscripción. Desarrollo de mi página web personal con animaciones y transiciones atractivas de fotografías de viajes, proyectos personales, progreso físico y redes sociales.',
   },
   // agrega más items
 ];
 ---
-<section id="experiencia" class="pt-20 px-6 scroll-m-20 w-full mx-auto container lg:max-w-4xl md:max-w-2xl">
+<section id="experiencia" class="py-10 px-6 scroll-m-20 w-full mx-auto container lg:max-w-4xl md:max-w-2xl">
   <div class="max-w-4xl mx-auto">
-    <h2 class="text-3xl font-semibold mb-8 text-center">Experiencia laboral</h2>
+    <h2 class="flex items-center gap-x-3 text-3xl font-semibold mb-8">
+      <img src={BriefCase.src} alt="Briefcase Icon" width="30"/>
+      Experiencia laboral</h2>
     <div class="space-y-8">
       <ol class="relative mt-16">
         {experiencias.map(exp => (

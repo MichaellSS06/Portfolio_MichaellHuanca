@@ -1,13 +1,35 @@
 ---
+import Project from "../assets/project_icon.svg";
+import Email from "../assets/email.svg";
+import LinkedIn from "../assets/linkedin.svg";
+import GitHub from "../assets/github.svg";
 ---
-<section id="hero" class="min-h-screen flex items-center justify-center">
-  <div class="text-center px-4 w-3xl">
+<section id="hero" class="min-h-screen flex flex-col md:flex-row gap-5 items-center justify-center mx-auto">
+  <div>
+    <img src="/perfil_1.JPG" alt="Mi perfil" width="200" class="rounded-full border-4 border-amber-400 shadow-lg mx-auto mb-4 mt-15 md:mt-0"/>
+  </div>
+  <div class="text-left px-4 max-w-xl md:max-w-3xl">
     <h1 class="text-2xl md:text-4xl font-bold mb-4">Hola, soy Michaell Huanca</h1>
     <p class="text-xl md:text-2xl mb-8">
       <span class="text-amber-400 font-bold">Ingeniero Informático, de Sistemas y Desarrollador Full-Stack / Mobile / DevOps </span>de Lima, Perú. Cuento con gran experiencia en soluciones tecnológicas atractivas.
     </p>
-    <a href="#proyectos" class="px-6 py-3 bg-blue-500 hover:bg-blue-600 rounded-md text-white">
+    <div class="mt-6 flex flex-col md:flex-row gap-2">
+    <a href="#proyectos" class="inline-flex px-6 py-3 mr-2 items-center justify-center gap-2 bg-blue-600 hover:bg-blue-800 rounded-full text-white font-semibold transition-shadow shadow-md hover:shadow-lg">
+      <img src={Project.src} alt="Mi imagen SVG" width="24"/>
       Ver mis proyectos
     </a>
+    <a href="mailto:michaellhuanca@gmail.com" class="inline-flex px-6 py-3 mr-2 items-center justify-center gap-2 rounded-full font-semibold shadow-md hover:shadow-lg border-2 hover:scale-105 transition-all" style="border-color: var(--color-border)">
+      <img src={Email.src} alt="Mi imagen SVG" width="20"/>
+      Contáctame
+    </a>
+    <a href="https://www.linkedin.com/in/michaellhuanca/" class="inline-flex px-6 py-3 mr-2 items-center justify-center gap-2 border-2 rounded-full font-semibold shadow-md hover:shadow-lg hover:scale-105 transition-all" style="border-color: var(--color-border)">
+      <img src={LinkedIn.src} alt="Mi imagen SVG" width="20"/>
+      LinkedIn
+    </a>
+    <a href="https://github.com/MichaellSS06" class="inline-flex px-6 py-3 items-center justify-center gap-2 border-2 rounded-full font-semibold shadow-md hover:shadow-lg hover:scale-105 transition-all" style="border-color: var(--color-border)">
+      <img src={GitHub.src} alt="Mi imagen SVG" width="20"/>
+      GitHub
+    </a>
+    </div> 
   </div>
 </section>

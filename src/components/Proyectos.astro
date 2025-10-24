@@ -1,44 +1,60 @@
 ---
+import Code from "../assets/code.svg";
+import Preview from "../assets/preview_icon.svg";
 interface Proyecto {
   nombre: string;
   descripcion: string;
   tecnologias: string[];
   enlace: string;
+  link: string
 }
 const proyectos: Proyecto[] = [
   {
     nombre: 'App de Avisos, Órdenes y Planes de Trabajo',
     descripcion: 'Aplicación móvil para Android y IOS que extrae data de SAP, la almacena en una base de datos y la hace accesible desde el móvil. Implementación: Scripts python para enviar la data a un endpoint creado en Django REST Framework, que a su vez la guarda en una base de datos PostgreSQL de Supabase. La app móvil está desarrollada en React Native y consume la API para mostrar la información a los usuarios.',
     tecnologias: ['React Native', 'Expo', 'Supabase', 'Django', 'Docker', 'TypeScript', 'Python', 'VBA', 'VBS', 'EAS', 'SAP', 'Render'],
-    enlace: 'https://tu-proyecto-nextjs.com'
+    enlace: '/app_AVI.jpeg',
+    link: '',
   },
   {
     nombre: 'Registro e Histórico de Equipos y Materiales',
-    descripcion: 'Aplicación web para registrar y consultar equipos y materiales de las subgerencias de transmisión. Implementación: Frontend desarrollado en Next.js con Tailwind CSS para un diseño responsivo y moderno. Backend en NextJS con Node.js que maneja la lógica de negocio y la comunicación con la base de datos en MongoDBAtlas. Se usó JWT para la autenticación segura de usuarios.',
+    descripcion: 'Aplicación web para registrar y consultar equipos y materiales de las subgerencias de transmisión con NFC desde el móvil. Implementación: Frontend desarrollado en Next.js con Tailwind CSS para un diseño responsivo y moderno. Backend en NextJS con Node.js que maneja la lógica de negocio y la comunicación con la base de datos en MongoDBAtlas. Se usó JWT para la autenticación segura de usuarios.',
     tecnologias: ['NextJS', 'React', 'Tailwind', 'MongoDB', 'JWT', 'Vercel', 'JavaScript', 'Node.js'],
-    enlace: 'https://tu-proyecto-astro.com'
+    enlace: '/web_NFC.webp',
+    link: 'https://nfc-nextjs-mongodb-auth.vercel.app/'
   },
   {
     nombre: 'World Of Training: Web de Entrenamiento',
     descripcion: 'Aplicación web con rutinas de entrenamiento físico personalizadas, seguimiento de progreso, históricos y puntuaciones, tiene salas de chats y planes de suscripción con prueba trial. Implementación: Frontend en NextJS con Tailwind CSS para una experiencia de usuario fluida y atractiva. Backend en Supabase donde se maneja la base de datos, autenticación con OAuth, storage para archivos e imágenes, edge functions para API, y realtime para chats. Se integró Paddle para la gestión de pagos y suscripciones.',
     tecnologias: ['NextJS', 'React', 'Tailwind', 'JavaScript', 'Supabase', 'Vercel', 'Deno', 'Paddle', 'PostgreSQL', 'Websockets', 'OAuth'],
-    enlace: 'https://tu-proyecto-django.com'
+    enlace: '/web_Training2.png',
+    link: 'https://nextjs-supabase-baas-traeai.vercel.app/'
   },
   {
     nombre: 'Mi web personal',
-    descripcion: 'Página web donde adjunto fotografías de mis viajes, proyectos personales, progreso físico y redes sociales. Implementación: Desarrollada en Astro para un rendimiento óptimo y tiempos de carga rápidos. Utiliza Markdown para gestionar el contenido de manera sencilla y Tailwind CSS para un diseño limpio y responsivo.',
+    descripcion: 'Página web donde adjunto fotografías de mis viajes con animaciones y transiciones, proyectos personales, progreso físico y redes sociales. Implementación: Desarrollada en Astro para un rendimiento óptimo y tiempos de carga rápidos. Utiliza Markdown para gestionar el contenido de manera sencilla y Tailwind CSS para un diseño limpio y responsivo.',
     tecnologias: ['Astro', 'Tailwind', 'JavaScript', 'Vercel', 'CSS', 'HTML'],
-    enlace: 'https://tu-app-react-native.com'
+    enlace: 'web_astro.webp',
+    link: 'https://astro-css-landing-gym.vercel.app/'
   },
 ];
 ---
-<section id="proyectos" class="py-20 px-6 section undefined scroll-m-20 w-full mx-auto container lg:max-w-4xl md:max-w-2xl">
-  <div class="max-w-5xl mx-auto">
-    <h2 class="text-3xl font-semibold mb-8 text-center">Proyectos</h2>
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+<section id="proyectos" class="py-10 px-6 section undefined scroll-m-20 w-full mx-auto container lg:max-w-4xl md:max-w-2xl">
+  <div class="mx-auto">
+    <h2 class="flex items-center gap-x-3 text-3xl font-semibold mb-8">
+      <img src={Code.src} alt="Code Icon" width="30"/>
+      Proyectos</h2>
+    <div class="flex flex-col gap-y-16">
       {proyectos.map(proj => (
-        <div class="flex flex-col gap-y-16">
-          <div>
+        <article class="flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0">
+          <div class="w-full md:w-1/2">
+            <div class="relative flex flex-col items-center col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50">
+              <img src={proj.enlace} alt={proj.nombre} class="object-cover object-top h-76 transition duration-500 md:scale-110 md:group-hover:scale-105" loading="lazy"/>
+
+            </div>
+
+          </div>
+          <div class="w-full md:w-1/2 md:max-w-lg">
             <h3 class="text-xl font-bold mb-2">{proj.nombre}</h3>
             <div class="flex flex-wrap gap-2 mb-4">
               {proj.tecnologias.map(tech => (
@@ -46,11 +62,13 @@ const proyectos: Proyecto[] = [
               ))}
             </div>
             <p class="mb-4 text-sm">{proj.descripcion}</p>
+            <a href={proj.link} target="_blank" role="link" class="inline-flex border-2 items-center justify-center gap-2 px-3 py-2 space-x-2 transition-all text-sm hover:scale-110 max-w-fit rounded-xl">
+              <img src={Preview.src} alt="Mi imagen SVG" width="24"/>
+              Ver proyecto →
+            </a>
           </div>
-          <a href={proj.enlace} target="_blank" class="text-blue-200 hover:underline">
-            Ver proyecto →
-          </a>
-        </div>
+          
+        </article>
       ))}
     </div>
   </div>
