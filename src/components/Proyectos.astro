@@ -32,20 +32,20 @@ const proyectos: Proyecto[] = [
   },
 ];
 ---
-<section id="proyectos" class="py-20 px-6">
+<section id="proyectos" class="py-20 px-6 section undefined scroll-m-20 w-full mx-auto container lg:max-w-4xl md:max-w-2xl">
   <div class="max-w-5xl mx-auto">
     <h2 class="text-3xl font-semibold mb-8 text-center">Proyectos</h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
       {proyectos.map(proj => (
-        <div class="bg-blue-700 p-6 rounded-lg hover:bg-blue-600 transition flex flex-col justify-between">
+        <div class="flex flex-col gap-y-16">
           <div>
             <h3 class="text-xl font-bold mb-2">{proj.nombre}</h3>
-            <p class="mb-4 text-sm md:text-base">{proj.descripcion}</p>
             <div class="flex flex-wrap gap-2 mb-4">
               {proj.tecnologias.map(tech => (
-                <span class="bg-blue-500 px-2 py-1 rounded text-xs md:text-sm">{tech}</span>
+                <span class="border-2 border-r-8 rounded-full px-2 py-1 text-amber-400 font-bold text-xs hover:scale-105 transition-all">{tech}</span>
               ))}
             </div>
+            <p class="mb-4 text-sm">{proj.descripcion}</p>
           </div>
           <a href={proj.enlace} target="_blank" class="text-blue-200 hover:underline">
             Ver proyecto →

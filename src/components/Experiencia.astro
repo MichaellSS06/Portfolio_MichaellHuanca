@@ -9,29 +9,41 @@ const experiencias: ExperienciaItem[] = [
   {
     puesto: 'Desarrollador Interno y Operador de Alta Tensión',
     empresa: 'Red de Energía del Perú',
-    periodo: '2023 – Presente',
+    periodo: 'Octubre 2023 – Presente',
     descripcion: 'Desarrollo de app móvil en producción (Android/iOS) para avisos, órdenes y planes de trabajo a nivel nacional. Automatización de procesos internos VBS, VBA, Python, Power Apps y Power Automate. Página web para el registro e histórico de equipos y materiales de las subgerencias de transmisión. Mantenimiento, supervisión y monitoreo de la red de transmisión eléctrica en alta tensión (220kV, 60kV, 22.9kV). Uso de equipos M4000, TDR9100, CPC100, TD1, LCM500.',
   },
   {
     puesto: 'Proyectos Universitarios y Freelance',
     empresa: 'UC y Redes sociales',
-    periodo: '2024 – Presente',
+    periodo: 'Marzo 2024 – Presente',
     descripcion: 'Creación una app de entrenamiento físico personalizado, con chats de usuarios y planes de suscripción. Desarrollo de mi página web personal con para gestión de redes sociales.',
   },
   // agrega más items
 ];
 ---
-<section id="experiencia" class="py-20 px-6">
+<section id="experiencia" class="pt-20 px-6 scroll-m-20 w-full mx-auto container lg:max-w-4xl md:max-w-2xl">
   <div class="max-w-4xl mx-auto">
     <h2 class="text-3xl font-semibold mb-8 text-center">Experiencia laboral</h2>
     <div class="space-y-8">
-      {experiencias.map(exp => (
-        <div class="bg-blue-800/40 p-4 rounded-lg">
-          <h3 class="text-2xl font-bold">{exp.puesto}</h3>
-          <p class="text-blue-200">{exp.empresa} · {exp.periodo}</p>
-          <p class="mt-2 text-sm md:text-base">{exp.descripcion}</p>
-        </div>
-      ))}
+      <ol class="relative mt-16">
+        {experiencias.map(exp => (
+          <li>
+          <div class="relative mx-12 pb-12 grid before:absolute before:left-[-35px] before:block before:h-full before:border-l-2 before:border-black/20 dark:before:border-white/15 before:content-[''] md:grid-cols-5 md:gap-10 md:space-x-4]">
+            <div class="relative pb-12 md:col-span-2">
+              <div class="sticky top-0">
+                <span class="text-yellow-400 -left-[42px] absolute rounded-full text-5xl">•</span>
+                <h3 class="text-xl font-bold">{exp.puesto}</h3>
+                <h4 class="text-amber-400 font-bold">{exp.empresa}</h4>
+                <time class="p-0 m-0 text-sm">{exp.periodo}</time>
+              </div>
+            </div>
+            <div class="relative flex flex-col gap-2 pb-4 md:col-span-3">
+              <p class="mt-2 text-sm">{exp.descripcion}</p>  
+            </div>
+          </div>
+          </li>
+        ))}
+      </ol>
     </div>
   </div>
 </section>
